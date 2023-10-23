@@ -12,13 +12,13 @@
 
         let check = () => {
             
-            let bidaltzekoOK = true;
+            let bidaltzekoOK = true; //vamos a suponer que al principio esta todo bien
 
             let abizen = document.getElementById("abizena");
-            abizen.setCustomValidity("");
+            abizen.setCustomValidity(""); //demagun abizena zuzena dela
 
-            let abizena = abizen.value;
-            let abizenaRegex = /^[A-Z][a-z]+$/;
+            let abizena = abizen.value; //abizenaren balioa jaso dut
+            let abizenaRegex = /^[A-Z][a-z]+$/; //solo puede tener la primera mayúscula y las demás minúsculas, no puede tener números por ejemplo
             if (abizenaRegex.test(abizena)) {
                 document.getElementById("abizena").style.backgroundColor = "green";
             } else {

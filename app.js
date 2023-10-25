@@ -9,7 +9,7 @@ app.listen( 3000, function() {
     console.log("Zerbitzaria 3000 portuan entzuten");
 })
 
-app.get("/", function(req, res) { //Cuando pongas / en el url te tiene que salir "Kaixo mundua!"
+app.get("/", function(req, res) { //Cuando pongas "/"(o nada) en el url te tiene que salir "Kaixo mundua!"
     res.send("Hello world!");
 });
 
@@ -18,5 +18,9 @@ app.post("/bezeroa", function(req, res) {
 });
 
 app.get('/bezeroa/', function(req, res) {
+    res.send(`Bezeroaren izena: ${req.query.izena} ${req.query.abizena}`);
+});
+
+app.get('/ariketa', function(req, res) {
     res.send(`Bezeroaren izena: ${req.query.izena} ${req.query.abizena}`);
 });

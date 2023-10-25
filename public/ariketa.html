@@ -43,8 +43,27 @@
 <body>
     <form action="/bezeroa" method="POST" id="formularioa">
         Izena: <input type="text" name="izena" required><br>
-        Abizena: <input type="text" name="abizena" id="abizena"><br>
-        <input type="submit" value="Bidali">
+        <br> Email: <input type="email" name="email"><br>
+        <br> Pasahitza: <input type="password" name="pasahitza"><br>
+        <br> Pasahitza konfirmatu: <input type="password" name="pasahitzaKonfirmatu"><br>
+        <br> Generoa: <select name="generoa">
+            <option value="emakumea">Emakumea</option>
+            <option value="gizona">Gizona</option>
+            <option value="bestea">Beste bat</option>
+          </select> <br>
+        <br> Urtebetetze data: <input type="date" name="urtebetetzea"><br>
+        <br> Helbidea: <textarea name="textarea" rows="5" cols="50"></textarea><br>
+        <br> Hiria: <input type="text" name="hiria"><br>
+        <br> Posta kodea: <input type="text" inputmode="numeric" name="kodea"><br> //sino quita inputmode y pon pattern="[0-9]*"
+        <br> I agree to the terms and conditions: <input type="checkbox" name="cookies"><br>
+       
+        <br> I want to receive the newsletter: <br>
+        <input type="radio" id="bai" name="receive">
+        <label for="bai">Bai</label>
+        <input type="radio" id="ez" name="receive">
+        <label for="ez">Ez</label><br>
+        <br> <input type="submit" value="Bidali">
+   
     </form>
 </body>
 </html>

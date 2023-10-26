@@ -14,15 +14,15 @@
             
             let bidaltzekoOK = true; //vamos a suponer que al principio esta todo bien
 
-            let abizen = document.getElementById("abizena");
-            abizen.setCustomValidity(""); //demagun abizena zuzena dela
+            let izen = document.getElementById("izena");
+            izen.setCustomValidity(""); //demagun izena zuzena dela
 
-            let abizena = abizen.value; //abizenaren balioa jaso dut
-            let abizenaRegex = /^[A-Z][a-z]+$/; //solo puede tener la primera mayúscula y las demás minúsculas, no puede tener números por ejemplo
-            if (abizenaRegex.test(abizena)) {
-                document.getElementById("abizena").style.backgroundColor = "green";
+            let izena = izen.value; //izenaren balioa jaso dut
+            let izenaRegex = /^[A-Z][a-z]+$/; //solo puede tener la primera mayúscula y las demás minúsculas, no puede tener números por ejemplo
+            if (izenaRegex.test(izena)) {
+                document.getElementById("izena").style.backgroundColor = "green";
             } else {
-                document.getElementById("abizena").style.backgroundColor = "red";
+                document.getElementById("izena").style.backgroundColor = "red";
                 abizen.setCustomValidity("Soilik letrak onartzen dira eta lehenengo letra larria izan behar da");
                 bidaltzekoOK = false;
             }
@@ -31,7 +31,7 @@
         }
 
         window.onload = () => {
-            document.getElementById("abizena").oninput = check;
+            document.getElementById("izena").oninput = check;
             document.querySelector("#formularioa").addEventListener("submit", (e) => {
                 e.preventDefault();
                 if (check()) e.target.submit();
@@ -42,7 +42,7 @@
 </head>
 <body>
 
-    <form action="/ariketa" method="POST">
+    <form action="/ariketa" method="POST" id="formularioa">
         Izena: <input type="text" name="izena" required><br>
         <br> Email: <input type="email" name="email"><br>
         <br> Pasahitza: <input type="password" name="pasahitza"><br>
@@ -65,7 +65,6 @@
         <label for="ez">Ez</label><br>
         <br>
         <input type="submit" value="Bidali">
-   
     </form>
 </body>
 </html>

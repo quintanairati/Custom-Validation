@@ -22,7 +22,6 @@ app.get('/bezeroa/', function(req, res) {
 });
 
 app.post("/ariketa", function(req, res) {
-    res.check
     res.send(`name: ${req.body.izena}`);
 });
 

@@ -91,12 +91,6 @@
 
         window.onload = () => {
             document.getElementById("izena").oninput = check;
-            /*
-            document.getElementById("pasahitza").oninput = check;
-            document.getElementById("pasahitzaKonfirmatu").oninput = check;
-            document.getElementById("hiria").oninput = check;
-            document.getElementById("kodea").oninput = check;
-            */
             document.querySelector("#formularioa").addEventListener("submit", (e) => {
                 e.preventDefault();
                 if (check()) e.target.submit();

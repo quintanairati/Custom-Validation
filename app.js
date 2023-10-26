@@ -29,11 +29,11 @@ app.post("/ariketa", function(req, res) {
         pasahitzaKonfirmatu: req.body.pasahitzaKonfirmatu,
         generoa: req.body.generoa,
         urtebetetzea: req.body.urtebetetzea,
-        helbidea: req.body.helbidea,
+        helbidea: req.body.textarea,
         hiria: req.body.hiria,
         kodea: req.body.kodea,
-        onartu: req.body.onartu,
-        newsletter: req.body.newsletter
+        onartu: req.body.cookies,
+        newsletter: req.body.radio
     }
     res.send(emaitza);
 });

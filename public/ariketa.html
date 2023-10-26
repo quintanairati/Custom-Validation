@@ -23,7 +23,65 @@
                 document.getElementById("izena").style.backgroundColor = "green";
             } else {
                 document.getElementById("izena").style.backgroundColor = "red";
-                abizen.setCustomValidity("Soilik letrak onartzen dira eta lehenengo letra larria izan behar da");
+                izen.setCustomValidity("Soilik letrak onartzen dira eta lehenengo letra larria izan behar da");
+                bidaltzekoOK = false;
+            }
+            return bidaltzekoOK;
+        }
+
+        let checkPasahitza = () => {
+            let bidaltzekoOK = true;
+
+            let pasahitza = getElementById("pasahitza");
+            pasahitza.setCustomValidity("");
+            let pasahitzakonf = getElementById("pasahitzaKonfirmatu");
+            pasahitzaKonfirmatu.setCustomValidity("");
+            
+            let pasahitza1 = pasahitza.value;
+            let pasahitza2 = pasahitzakonf.value;
+            if (pasahitza1 == pasahitza2) {
+                document.getElementById("pasahitza1").style.backgroundColor = "green";
+                document.getElementById("pasahitza2").style.backgroundColor = "green";
+            } else {
+                document.getElementById("pasahitza2").style.backgroundColor = "red";
+                pasahitzakonf.setCustomValidity("Ez da pasahitza bera");
+                bidaltzekoOK = false;
+            }
+            return bidaltzekoOK;
+        }
+
+        let checkHiria = () => {
+            let bidaltzekoOK = true;
+
+            let hiri = getElementById("hiria");
+            hiri.setCustomValidity("");
+
+            let hiria = hiri.value;
+            let hiriaRegex = /^[a-z]+$/;
+            if (hiriRegex.text(hiria) || hiria.length > 2) {
+                document.getElementById("hiria").style.backgroundColor = "green";
+            } else {
+                document.getElementById("hiria").style.backgroundColor = "red";
+                hiri.setCustomValidity("Hiru hizki izan behar ditu.");
+                bidaltzekoOK = false;
+            }
+
+            return bidaltzekoOK;
+        }
+
+        let checkKodea = () => {
+            let bidaltzekoOK = true;
+
+            let kodea = getElementById("kodea");
+            kodea.setCustomValidity("");
+
+            let kod = kodea.value;
+            let kodRegex = /^[0-9]+$/;
+            if (kodRegex.match(kod)) {
+                document.getElementById("kodea").style.backgroundColor = "green";
+            } else {
+                document.getElementById("kodea").style.backgroundColor = "red";
+                kodea.setCustomValidity("Soilik zenbakiak onartzen dira.");
                 bidaltzekoOK = false;
             }
 
@@ -37,32 +95,53 @@
                 if (check()) e.target.submit();
             });
 
+            document.getElementById("pasahizta").oninput = checkPasahitza;
+            document.getElementById("pasahitzaKonfirmatu").oninput = checkPasahitza;
+            document.querySelector("#formularioa").addEventListener("submit", (e) => {
+                e.preventDefault();
+                if (checkPasahitza()) e.target.submit();
+            });
+
+            document.getElementById("kodea").oninput = checkKodea;
+            document.querySelector("#formularioa").addEventListener("submit", (e) => {
+                e.preventDefault();
+                if (checkKodea()) e.target.submit();
+            });
+
+            document.getElementById("hiria").oninput = checkHiria;
+            document.querySelector("#formularioa").addEventListener("submit", (e) => {
+                e.preventDefault();
+                if (checkHiria()) e.target.submit();
+            });
+
         };
     </script>
 </head>
 <body>
 
     <form action="/ariketa" method="POST" id="formularioa">
-        Izena: <input type="text" name="izena" required><br>
-        <br> Email: <input type="email" name="email" required><br>
-        <br> Pasahitza: <input type="password" name="pasahitza" required><br>
-        <br> Pasahitza konfirmatu: <input type="password" name="pasahitzaKonfirmatu" required><br>
-        <br> Generoa: <select name="generoa" required>
+        Izena: <input type="text" name="izena" id="izena" required><br>
+        <br> Email: <input type="email" name="email" id="email" required><br>
+        <br> Pasahitza: <input type="password" name="pasahitza" id="pasahitza" required><br>
+        <br> Pasahitza konfirmatu: <input type="password" name="pasahitzaKonfirmatu" id="pasahitzaKonfirmatu" required><br>
+        <br> Generoa: <select name="generoa" id="generoa" required>
             <option value="emakumea">Emakumea</option>
             <option value="gizona">Gizona</option>
             <option value="bestea">Beste bat</option>
           </select> <br>
-        <br> Urtebetetze data: <input type="date" name="urtebetetzea" required><br>
+        <br> Urtebetetze data: <input type="date" name="urtebetetzea" id="urtebetetzea" required><br>
         <br> Helbidea: <textarea name="textarea" rows="5" cols="50"></textarea><br>
-        <br> Hiria: <input type="text" name="hiria" required><br>
-        <br> Posta kodea: <input type="text" inputmode="numeric" name="kodea" required><br> //sino quita inputmode y pon pattern="[0-9]*"
-        <br> I agree to the terms and conditions: <input type="checkbox" name="cookies" required><br>
-       
-        <br> I want to receive the newsletter: <br>
-        <input type="radio" id="bai" name="receive">
-        <label for="bai">Bai</label>
-        <input type="radio" id="ez" name="receive">
-        <label for="ez">Ez</label><br>
+        <br> Hiria: <input type="text" name="hiria" id="hiria" required><br>
+        <br> Posta kodea: <input type="text" inputmode="numeric" name="kodea" id="kodea" required><br> //sino quita inputmode y pon pattern="[0-9]*"
+        <br> I agree to the terms and conditions: <input type="checkbox" name="cookies" required>
+
+        <div style="border-style: solid; max-width: 250px;">
+            I want to receive the newsletter: <br>
+            <input type="radio" id="bai" name="receive" required>
+            <label for="bai">Bai</label>
+            <input type="radio" id="ez" name="receive" required>
+            <label for="ez">Ez</label><br>
+        </div>
         <br>
         <input type="submit" value="Bidali">
     </form>

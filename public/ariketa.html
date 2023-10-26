@@ -26,15 +26,58 @@
                 izen.setCustomValidity("Soilik letrak onartzen dira eta lehenengo letra larria izan behar da");
                 bidaltzekoOK = false;
             }
+/*
+            let pasahitza = document.getElementById("pasahitza");
+            pasahitza.setCustomValidity("");
+            let pasahitzakonf = document.getElementById("pasahitzaKonfirmatu");
+            pasahitzaKonfirmatu.setCustomValidity("");
+            
+            let pasahitza1 = pasahitza.value;
+            let pasahitza2 = pasahitzakonf.value;
+            if (pasahitza1 == pasahitza2) {
+                document.getElementById("pasahitza1").style.backgroundColor = "green";
+                document.getElementById("pasahitza2").style.backgroundColor = "green";
+            } else {
+                document.getElementById("pasahitza2").style.backgroundColor = "red";
+                pasahitzakonf.setCustomValidity("Ez da pasahitza bera");
+                bidaltzekoOK = false;
+            }
+
+            let hiri = document.getElementById("hiria");
+            hiri.setCustomValidity("");
+
+            let hiria = hiri.value;
+            let hiriaRegex = /^[a-z]+$/;
+            if (hiriRegex.test(hiria) || hiria.length > 2) {
+                document.getElementById("hiria").style.backgroundColor = "green";
+            } else {
+                document.getElementById("hiria").style.backgroundColor = "red";
+                hiri.setCustomValidity("Hiru hizki izan behar ditu.");
+                bidaltzekoOK = false;
+            }
+
+            let kodea = document.getElementById("kodea");
+            kodea.setCustomValidity("");
+
+            let kod = kodea.value;
+            let kodRegex = /^[0-9]+$/;
+            if (kodRegex.test(kod)) {
+                document.getElementById("kodea").style.backgroundColor = "green";
+            } else {
+                document.getElementById("kodea").style.backgroundColor = "red";
+                kodea.setCustomValidity("Soilik zenbakiak onartzen dira.");
+                bidaltzekoOK = false;
+            }
+*/
             return bidaltzekoOK;
         }
 
         let checkPasahitza = () => {
             let bidaltzekoOK = true;
 
-            let pasahitza = getElementById("pasahitza");
+            let pasahitza = document.getElementById("pasahitza");
             pasahitza.setCustomValidity("");
-            let pasahitzakonf = getElementById("pasahitzaKonfirmatu");
+            let pasahitzakonf = document.getElementById("pasahitzaKonfirmatu");
             pasahitzaKonfirmatu.setCustomValidity("");
             
             let pasahitza1 = pasahitza.value;
@@ -53,12 +96,12 @@
         let checkHiria = () => {
             let bidaltzekoOK = true;
 
-            let hiri = getElementById("hiria");
+            let hiri = document.getElementById("hiria");
             hiri.setCustomValidity("");
 
             let hiria = hiri.value;
             let hiriaRegex = /^[a-z]+$/;
-            if (hiriRegex.text(hiria) || hiria.length > 2) {
+            if (hiriRegex.test(hiria) || hiria.length > 2) {
                 document.getElementById("hiria").style.backgroundColor = "green";
             } else {
                 document.getElementById("hiria").style.backgroundColor = "red";
@@ -72,12 +115,12 @@
         let checkKodea = () => {
             let bidaltzekoOK = true;
 
-            let kodea = getElementById("kodea");
+            let kodea = document.getElementById("kodea");
             kodea.setCustomValidity("");
 
             let kod = kodea.value;
             let kodRegex = /^[0-9]+$/;
-            if (kodRegex.match(kod)) {
+            if (kodRegex.test(kod)) {
                 document.getElementById("kodea").style.backgroundColor = "green";
             } else {
                 document.getElementById("kodea").style.backgroundColor = "red";
@@ -90,16 +133,28 @@
 
         window.onload = () => {
             document.getElementById("izena").oninput = check;
+            /*
+            document.getElementById("pasahitza").oninput = check;
+            document.getElementById("pasahitzaKonfirmatu").oninput = check;
+            document.getElementById("hiria").oninput = check;
+            document.getElementById("kodea").oninput = check;
+            */
             document.querySelector("#formularioa").addEventListener("submit", (e) => {
                 e.preventDefault();
                 if (check()) e.target.submit();
             });
 
-            document.getElementById("pasahizta").oninput = checkPasahitza;
+            document.getElementById("pasahitza").oninput = checkPasahitza;
             document.getElementById("pasahitzaKonfirmatu").oninput = checkPasahitza;
             document.querySelector("#formularioa").addEventListener("submit", (e) => {
                 e.preventDefault();
                 if (checkPasahitza()) e.target.submit();
+            });
+
+            document.getElementById("hiria").oninput = checkHiria;
+            document.querySelector("#formularioa").addEventListener("submit", (e) => {
+                e.preventDefault();
+                if (checkHiria()) e.target.submit();
             });
 
             document.getElementById("kodea").oninput = checkKodea;
@@ -108,11 +163,6 @@
                 if (checkKodea()) e.target.submit();
             });
 
-            document.getElementById("hiria").oninput = checkHiria;
-            document.querySelector("#formularioa").addEventListener("submit", (e) => {
-                e.preventDefault();
-                if (checkHiria()) e.target.submit();
-            });
 
         };
     </script>

@@ -33,7 +33,7 @@ app.post("/ariketa", function(req, res) {
         hiria: req.body.hiria,
         kodea: req.body.kodea,
         onartu: req.body.cookies,
-        newsletter: req.body.radio
+        newsletter: req.body.receive
     }
     res.send(emaitza);
 });

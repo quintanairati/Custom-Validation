@@ -22,9 +22,18 @@ app.get('/bezeroa/', function(req, res) {
 });
 
 app.post("/ariketa", function(req, res) {
-    res.send(`name: ${req.body.izena}`);
-});
-
-app.get('/ariketa/', function(req, res) {
-    res.send();
+    const emaitza = {
+        izena: req.body.izena,
+        email: req.body.email,
+        pasahitza: req.body.pasahitza,
+        pasahitzaKonfirmatu: req.body.pasahitzaKonfirmatu,
+        generoa: req.body.generoa,
+        urtebetetzea: req.body.urtebetetzea,
+        helbidea: req.body.helbidea,
+        hiria: req.body.hiria,
+        kodea: req.body.kodea,
+        onartu: req.body.onartu,
+        newsletter: req.body.newsletter
+    }
+    res.send(emaitza);
 });

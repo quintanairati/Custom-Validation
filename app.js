@@ -21,6 +21,11 @@ app.get('/bezeroa/', function(req, res) {
     res.send(`Bezeroaren izena: ${req.query.izena} ${req.query.abizena}`);
 });
 
-app.get('/ariketa', function(req, res) {
-    res.send(`Bezeroaren izena: ${req.query.izena} ${req.query.abizena}`);
+app.post("/ariketa", function(req, res) {
+    res.check
+    res.send(`name: ${req.body.izena}`);
+});
+
+app.get('/ariketa/', function(req, res) {
+    res.send();
 });

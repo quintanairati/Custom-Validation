@@ -44,19 +44,19 @@
 
     <form action="/ariketa" method="POST" id="formularioa">
         Izena: <input type="text" name="izena" required><br>
-        <br> Email: <input type="email" name="email"><br>
-        <br> Pasahitza: <input type="password" name="pasahitza"><br>
-        <br> Pasahitza konfirmatu: <input type="password" name="pasahitzaKonfirmatu"><br>
-        <br> Generoa: <select name="generoa">
+        <br> Email: <input type="email" name="email" required><br>
+        <br> Pasahitza: <input type="password" name="pasahitza" required><br>
+        <br> Pasahitza konfirmatu: <input type="password" name="pasahitzaKonfirmatu" required><br>
+        <br> Generoa: <select name="generoa" required>
             <option value="emakumea">Emakumea</option>
             <option value="gizona">Gizona</option>
             <option value="bestea">Beste bat</option>
           </select> <br>
-        <br> Urtebetetze data: <input type="date" name="urtebetetzea"><br>
+        <br> Urtebetetze data: <input type="date" name="urtebetetzea" required><br>
         <br> Helbidea: <textarea name="textarea" rows="5" cols="50"></textarea><br>
-        <br> Hiria: <input type="text" name="hiria"><br>
-        <br> Posta kodea: <input type="text" inputmode="numeric" name="kodea"><br> //sino quita inputmode y pon pattern="[0-9]*"
-        <br> I agree to the terms and conditions: <input type="checkbox" name="cookies"><br>
+        <br> Hiria: <input type="text" name="hiria" required><br>
+        <br> Posta kodea: <input type="text" inputmode="numeric" name="kodea" required><br> //sino quita inputmode y pon pattern="[0-9]*"
+        <br> I agree to the terms and conditions: <input type="checkbox" name="cookies" required><br>
        
         <br> I want to receive the newsletter: <br>
         <input type="radio" id="bai" name="receive">
